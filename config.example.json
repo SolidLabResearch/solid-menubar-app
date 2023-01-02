@@ -1,0 +1,7 @@
+{
+  "webid": "https://exampl.com#me",
+  "email": "you@example.com",
+  "password": "your-password",
+  "serverUrl": "https://pod.example.com",
+  "vacationUrl": "https://pod.example.com/vacation-calendar"
+}

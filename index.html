@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Vacation</title>
+  </head>
+  <body>
+    <h3>Dates:</h3>
+    <ul id="dates"></ul>
+    <p id="info"></p>
+  </body>
+
+  <script>
+    const information = document.getElementById('info')
+    information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+    async function update() {
+      document.getElementById('dates').innerText = await window.versions.dates();
+    }
+    update()
+  </script>
+</html>
