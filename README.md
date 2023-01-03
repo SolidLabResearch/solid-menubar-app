@@ -16,3 +16,7 @@ Important: I didn't clean this code or add any documentation.
    ```shell
    npm start
    ```
+   
+## Screenshot
+
+![img.png](img.png)
