@@ -3,5 +3,10 @@
   "email": "you@example.com",
   "password": "your-password",
   "serverUrl": "https://pod.example.com",
-  "vacationUrl": "https://pod.example.com/vacation-calendar"
+  "vacations": [
+    {
+      "vacationUrl": "https://pod.example.com/vacation-calendar",
+      "webid": "https://favourite-person.com/#me"
+    }
+  ]
 }

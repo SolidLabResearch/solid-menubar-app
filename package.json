@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@comunica/query-sparql-rdfjs": "^2.5.2",
     "@inrupt/solid-client-authn-core": "^1.12.3",
     "electron": "^21.0.0",
     "fs-extra": "^11.1.0",
