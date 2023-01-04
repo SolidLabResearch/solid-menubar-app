@@ -30,7 +30,6 @@ async function main() {
     const fetch = await getAuthenticatedFetch(configFilePath);
     const data = await getAllDates(vacations, fetch);
     upcoming = data;
-    data[0].dates.push('2023-01-03');
     console.log(data);
     vacationsToday = getVacationsToday(data)
     console.log(vacationsToday);
