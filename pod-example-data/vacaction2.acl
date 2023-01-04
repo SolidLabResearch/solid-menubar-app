@@ -1,0 +1,16 @@
+# Root ACL resource for the agent account
+@prefix acl: <http://www.w3.org/ns/auth/acl#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<#public>
+    a acl:Authorization;
+    acl:agent <https://pieterheyvaert.com/#me>;
+    acl:accessTo <./vacation2>;
+    acl:mode acl:Read.
+
+<#owner>
+    a acl:Authorization;
+    acl:agent <https://pod.playground.solidlab.be/misty/profile/card#me>;
+    acl:accessTo <./vacation1>;
+    acl:mode acl:Read, acl:Write, acl:Control.
+

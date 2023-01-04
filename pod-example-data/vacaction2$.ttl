@@ -1,0 +1,14 @@
+@prefix knows: <https://data.knows.idlab.ugent.be/person/office/#> .
+
+<https://pod.playground.solidlab.be/misty/vacation2>
+    a knows:VacationCalendar;
+    knows:days [
+      knows:date "2023-01-05";
+      knows:partOfDay knows:FullDay
+    ], [
+      knows:date "2023-02-02";
+      knows:partOfDay knows:Morning
+    ],  [
+      knows:date "2023-03-05";
+      knows:partOfDay knows:Afternoon
+    ].

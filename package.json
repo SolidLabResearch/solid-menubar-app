@@ -1,18 +1,17 @@
 {
   "dependencies": {
-    "@comunica/query-sparql-rdfjs": "^2.5.2",
+    "@comunica/query-sparql": "^2.5.2",
     "@inrupt/solid-client-authn-core": "^1.12.3",
     "electron": "^21.0.0",
     "fs-extra": "^11.1.0",
     "jsonld": "^8.1.0",
     "menubar": "^9.2.3",
-    "n3": "^1.16.3",
     "node-fetch": "^3.3.0",
     "node-fetch-commonjs": "^3.2.4",
     "rdf-parse": "^2.1.1",
     "readable-web-to-node-stream": "^3.0.2"
   },
   "scripts": {
-    "start": "npx electron myApp.js"
+    "start": "npx electron app.js"
   }
 }
