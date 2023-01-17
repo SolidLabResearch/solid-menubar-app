@@ -21,11 +21,18 @@
       if (vacationsToday === undefined) {
         document.getElementById('today-message').innerText = 'Loading...';
       } else {
-        document.getElementById('today-message').innerText = '';
-        for (const name of vacationsToday) {
-          const $li = document.createElement('li');
-          $li.innerText = name;
-          document.getElementById('today').appendChild($li);
+        document.getElementById('today').innerHTML = '';
+
+        if (vacationsToday.length === 0) {
+          document.getElementById('today-message').innerHTML = 'Nobody.';
+        } else {
+          document.getElementById('today-message').innerText = '';
+
+          for (const name of vacationsToday) {
+            const $li = document.createElement('li');
+            $li.innerText = name;
+            document.getElementById('today').appendChild($li);
+          }
         }
       }
 
@@ -34,11 +41,18 @@
       if (upcoming === undefined) {
         document.getElementById('upcoming-message').innerText = 'Loading...';
       } else {
-        document.getElementById('upcoming-message').innerText = '';
-        for (const el of upcoming) {
-          const $li = document.createElement('li');
-          $li.innerText = `${el.name} ➡️ ${el.dates.join(', ')}`;
-          document.getElementById('upcoming').appendChild($li);
+        document.getElementById('upcoming').innerHTML = '';
+
+        if (upcoming.length === 0) {
+          document.getElementById('upcoming-message').innerHTML = 'Nobody.';
+        } else {
+          document.getElementById('upcoming-message').innerText = '';
+
+          for (const el of upcoming) {
+            const $li = document.createElement('li');
+            $li.innerText = `${el.name} ➡️ ${el.dates.join(', ')}`;
+            document.getElementById('upcoming').appendChild($li);
+          }
         }
       }
     }

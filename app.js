@@ -41,7 +41,12 @@ async function main() {
       mb.window.webContents.send('dataUpdated', true);
     }
 
-    setInterval(getLatestData, 30*60*1000, fetch, vacations);
+    setInterval(async () => {
+      const result = await getLatestData(fetch, vacations);
+      upcoming = result.upcoming;
+      vacationsToday = result.vacationsToday;
+      mb.window.webContents.send('dataUpdated', true);
+    }, 30*60*1000, fetch, vacations);
   });
 
   mb.on('after-create-window', () => {
