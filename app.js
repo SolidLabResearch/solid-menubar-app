@@ -18,9 +18,11 @@ async function main() {
     }
   });
 
+  let dataUpdated = false;
+
   mb.on('ready', async () => {
-    let upcoming;
-    let vacationsToday;
+    let upcoming = undefined;
+    let vacationsToday = undefined;
     console.log('app is ready');
     ipcMain.handle('upcoming', () => upcoming);
     ipcMain.handle('vacationsToday', () => vacationsToday);
@@ -28,20 +30,46 @@ async function main() {
     const configFilePath = path.join(process.cwd(), 'config.json');
     const {vacations} = await fsExtra.readJson(configFilePath);
     const fetch = await getAuthenticatedFetch(configFilePath);
-    const data = await getAllDates(vacations, fetch);
-    upcoming = data;
-    console.log(data);
-    vacationsToday = getVacationsToday(data)
-    console.log(vacationsToday);
-    removeToday(upcoming);
+
+    const result = await getLatestData(fetch, vacations);
+    upcoming = result.upcoming;
+    vacationsToday = result.vacationsToday;
+
+    if (!mb.window) {
+      dataUpdated = true;
+    } else {
+      mb.window.webContents.send('dataUpdated', true);
+    }
+
+    setInterval(getLatestData, 30*60*1000, fetch, vacations);
   });
 
   mb.on('after-create-window', () => {
     const mainWindow = mb.window;
+
+    if (dataUpdated) {
+      mainWindow.webContents.send('dataUpdated', true);
+    }
   });
 
   mb.once('show', function () {
     //mb.window.openDevTools();
   });
+}
+
+async function getLatestData(fetch, vacations) {
+  if (!fetch || !vacations) {
+    throw new Error('Function getLatestData does not have all parameters.');
+  }
+
+  console.log('Getting latest data...');
+  const data = await getAllDates(vacations, fetch);
+  const upcoming = data;
+  console.log(data);
+  const vacationsToday = getVacationsToday(data)
+  console.log(vacationsToday);
+  removeToday(upcoming);
+
+  return {upcoming, vacationsToday};
 }
 

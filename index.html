@@ -5,8 +5,10 @@
   <body>
     <h3>On vacation today:</h3>
     <ul id="today"></ul>
+    <p id="today-message"></p>
     <h3> Upcoming vacation days:</h3>
     <ul id="upcoming"></ul>
+    <p id="upcoming-message"></p>
     <p id="info"></p>
   </body>
 
@@ -14,20 +16,36 @@
     //const information = document.getElementById('info')
     //information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
     async function update() {
-      const vacationsToday = await window.versions.vacationsToday();
-      for (const name of vacationsToday) {
-        const $li = document.createElement('li');
-        $li.innerText = name;
-        document.getElementById('today').appendChild($li);
+      const vacationsToday = await window.data.vacationsToday();
+
+      if (vacationsToday === undefined) {
+        document.getElementById('today-message').innerText = 'Loading...';
+      } else {
+        document.getElementById('today-message').innerText = '';
+        for (const name of vacationsToday) {
+          const $li = document.createElement('li');
+          $li.innerText = name;
+          document.getElementById('today').appendChild($li);
+        }
       }
 
-      const upcoming = await window.versions.upcoming();
-      for (const el of upcoming) {
-        const $li = document.createElement('li');
-        $li.innerText = `${el.name} ➡️ ${el.dates.join(', ')}`;
-        document.getElementById('upcoming').appendChild($li);
+      const upcoming = await window.data.upcoming();
+
+      if (upcoming === undefined) {
+        document.getElementById('upcoming-message').innerText = 'Loading...';
+      } else {
+        document.getElementById('upcoming-message').innerText = '';
+        for (const el of upcoming) {
+          const $li = document.createElement('li');
+          $li.innerText = `${el.name} ➡️ ${el.dates.join(', ')}`;
+          document.getElementById('upcoming').appendChild($li);
+        }
       }
     }
     update();
+
+    window.data.dataUpdated((event, data) => {
+      update();
+    });
   </script>
 </html>
