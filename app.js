@@ -13,7 +13,7 @@ async function main() {
 
   const mb = menubar({
     showDockIcon: false,
-    icon: path.join(process.cwd(), config['icon'] || 'icons/icon.png' ),
+    icon: path.join(process.cwd(), config['icon'] || 'icons/icon-white.png' ),
     browserWindow: {
       webPreferences: {
         preload: path.join(__dirname, 'preload.js'),
