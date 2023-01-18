@@ -3,6 +3,7 @@
   "email": "you@example.com",
   "password": "your-password",
   "serverUrl": "https://pod.example.com",
+  "icon": "icons/icon-white.png",
   "vacations": [
     {
       "vacationUrl": "https://pod.example.com/vacation-calendar",

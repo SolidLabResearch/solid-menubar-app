@@ -8,9 +8,12 @@ const {ipcMain} = require('electron');
 main();
 
 async function main() {
+  const configFilePath = path.join(process.cwd(), 'config.json');
+  const config = await fsExtra.readJson(configFilePath);
+
   const mb = menubar({
     showDockIcon: false,
-    icon: path.join(process.cwd(), 'icon.png'),
+    icon: path.join(process.cwd(), config['icon'] || 'icons/icon-white.png' ),
     browserWindow: {
       webPreferences: {
         preload: path.join(__dirname, 'preload.js'),
@@ -27,8 +30,7 @@ async function main() {
     ipcMain.handle('upcoming', () => upcoming);
     ipcMain.handle('vacationsToday', () => vacationsToday);
 
-    const configFilePath = path.join(process.cwd(), 'config.json');
-    const {vacations} = await fsExtra.readJson(configFilePath);
+    const vacations = config['vacations'];
     const fetch = await getAuthenticatedFetch(configFilePath);
 
     const result = await getLatestData(fetch, vacations);
