@@ -1,55 +1,56 @@
 <html>
-  <head>
+<head>
     <title>Vacation</title>
-    <link rel="stylesheet" href="index.css" />
-  </head>
-  <body>
-    <h3>On vacation today:</h3>
-    <ul id="today"></ul>
-    <p id="today-message"></p>
-    <h3> Upcoming vacation days:</h3>
-    <ul id="upcoming"></ul>
-    <p id="upcoming-message"></p>
-    <p id="info"></p>
-  </body>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+<h3>On vacation today:</h3>
+<ul id="today"></ul>
+<p id="today-message"></p>
+<h3> Upcoming vacation days:</h3>
+<ul id="upcoming"></ul>
+<p id="upcoming-message"></p>
+<p id="info"></p>
+</body>
 
-  <script>
-    //const information = document.getElementById('info')
-    //information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
-    async function update() {
-      const vacationsToday = await window.data.vacationsToday();
+<script>
+  //const information = document.getElementById('info')
+  //information.innerText = `This app is using Chrome (v${versions.chrome()}), Node.js (v${versions.node()}), and Electron (v${versions.electron()})`
+  async function update() {
+    const vacationsToday = await window.data.vacationsToday();
 
-      if (vacationsToday === undefined) {
-        document.getElementById('today-message').innerText = 'Loading...';
+    if (vacationsToday === undefined) {
+      document.getElementById('today-message').innerText = 'Loading...';
+    } else {
+      document.getElementById('today').innerHTML = '';
+
+      if (vacationsToday.length === 0) {
+        document.getElementById('today-message').innerHTML = 'Nobody.';
       } else {
-        document.getElementById('today').innerHTML = '';
+        document.getElementById('today-message').innerText = '';
 
-        if (vacationsToday.length === 0) {
-          document.getElementById('today-message').innerHTML = 'Nobody.';
-        } else {
-          document.getElementById('today-message').innerText = '';
-
-          for (const name of vacationsToday) {
-            const $li = document.createElement('li');
-            $li.innerText = name;
-            document.getElementById('today').appendChild($li);
-          }
+        for (const name of vacationsToday) {
+          const $li = document.createElement('li');
+          $li.innerText = name;
+          document.getElementById('today').appendChild($li);
         }
       }
+    }
 
-      const upcoming = await window.data.upcoming();
+    const upcoming = await window.data.upcoming();
 
-      if (upcoming === undefined) {
-        document.getElementById('upcoming-message').innerText = 'Loading...';
+    if (upcoming === undefined) {
+      document.getElementById('upcoming-message').innerText = 'Loading...';
+    } else {
+      document.getElementById('upcoming').innerHTML = '';
+
+      if (upcoming.length === 0) {
+        document.getElementById('upcoming-message').innerHTML = 'Nobody.';
       } else {
-        document.getElementById('upcoming').innerHTML = '';
+        document.getElementById('upcoming-message').innerText = '';
 
-        if (upcoming.length === 0) {
-          document.getElementById('upcoming-message').innerHTML = 'Nobody.';
-        } else {
-          document.getElementById('upcoming-message').innerText = '';
-
-          for (const el of upcoming) {
+        for (const el of upcoming) {
+          if (el.dates.length > 0) {
             const $li = document.createElement('li');
             $li.innerText = `${el.name} ➡️ ${el.dates.join(', ')}`;
             document.getElementById('upcoming').appendChild($li);
@@ -57,10 +58,12 @@
         }
       }
     }
-    update();
+  }
 
-    window.data.dataUpdated((event, data) => {
-      update();
-    });
-  </script>
+  update();
+
+  window.data.dataUpdated((event, data) => {
+    update();
+  });
+</script>
 </html>
