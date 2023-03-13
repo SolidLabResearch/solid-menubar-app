@@ -5,12 +5,12 @@
 <#public>
     a acl:Authorization;
     acl:agent <https://pieterheyvaert.com/#me>;
-    acl:accessTo <./vacation1>;
+    acl:accessTo <./vacation-calendar>;
     acl:mode acl:Read.
 
 <#owner>
     a acl:Authorization;
-    acl:agent <https://pod.playground.solidlab.be/ash/profile/card#me>;
-    acl:accessTo <./vacation1>;
+    acl:agent <https://pod.playground.solidlab.be/c1/profile/card#me>;
+    acl:accessTo <./vacation-calendar>;
     acl:mode acl:Read, acl:Write, acl:Control.
 
