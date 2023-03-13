@@ -11,11 +11,25 @@ Important: I didn't clean this code or add any documentation.
    ```shell
    cp config.example.json config.json
    ```
-3. Edit config.json
+3. Edit config.json. See details below.
 4. Start app via
    ```shell
    npm start
    ```
+   
+## Config file
+The config file supports the following attributes:
+
+- `webid`: your WebID
+- `email`: email to log in to your pod/identity provider
+- `password`: password to log in to your pod/identity provider
+- `serverUrl`: url of your identify provider
+- `icon`: path of the icon to show in the menubar
+- `vacations`: array of vacation calendars with the properties `vacationUrl` and `webid`
+- `vacations[*].vacationUrl`: url of a vacation calendar
+- `vacations[*].webid`: WebID to whom the vacation calendar belongs
+
+You find an example config file in `config.examnple.json`.
    
 ## Screenshot
 
