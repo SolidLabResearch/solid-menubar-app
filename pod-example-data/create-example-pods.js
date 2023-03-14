@@ -26,6 +26,20 @@ async function main() {
 
   storeCalendarOnPod(1);
   storeCalendarOnPod(2);
+
+  await addNameToPod({
+    email: 'c1@example.com',
+    password: `test`,
+    webid: 'https://pod.playground.solidlab.be/c1/profile/card#me',
+    name: 'Nathalie'
+  });
+
+  await addNameToPod({
+    email: 'c2@example.com',
+    password: `test`,
+    webid: 'https://pod.playground.solidlab.be/c2/profile/card#me',
+    name: 'Amara'
+  });
 }
 
 async function storeCalendarOnPod(number) {
@@ -91,5 +105,32 @@ async function createPod(options) {
     console.error(`Pod for ${email} already exists.`);
   } else {
     console.log(`Pod for ${email} was created.`);
+  }
+}
+
+async function addNameToPod(options){
+  const {email, password, webid, name} = options;
+
+  const {id, secret} = await generateToken('https://pod.playground.solidlab.be/', email, password);
+  const {accessToken, dpopKey} = await requestAccessToken('https://pod.playground.solidlab.be/.oidc/token', id, secret);
+  const authFetch = await buildAuthenticatedFetch(fetch, accessToken, {dpopKey});
+  const response = await authFetch(webid, {
+    method: 'PATCH',
+    body: `
+    @prefix solid: <http://www.w3.org/ns/solid/terms#>.
+    @prefix schema: <http://schema.org/>.
+
+    _:rename a solid:InsertDeletePatch;
+      solid:inserts { <${webid}> schema:name "${name}". }.
+    `,
+    headers: {
+      'content-type': 'text/n3'
+    }
+  });
+
+  if (response.ok) {
+    console.log(`Name of ${email} set to ${name}.`);
+  } else {
+    console.error(await response.text());
   }
 }
