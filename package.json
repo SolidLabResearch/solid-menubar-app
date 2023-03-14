@@ -13,5 +13,8 @@
   },
   "scripts": {
     "start": "npx electron app.js"
+  },
+  "devDependencies": {
+    "date-fns": "^2.29.3"
   }
 }

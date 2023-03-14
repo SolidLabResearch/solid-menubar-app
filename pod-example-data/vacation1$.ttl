@@ -3,7 +3,7 @@
 <https://pod.playground.solidlab.be/c1/profile/vacation-calendar>
     a knows:VacationCalendar;
     knows:days [
-      knows:date "2023-01-04";
+      knows:date "$$$TODAY$$$";
       knows:partOfDay knows:FullDay
     ], [
       knows:date "2023-05-02";

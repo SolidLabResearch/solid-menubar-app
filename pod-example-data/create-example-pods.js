@@ -1,5 +1,6 @@
 const fetch = require('node-fetch-commonjs');
 const fs = require('fs');
+const {format} = require('date-fns');
 const {generateToken, requestAccessToken} = require('../lib/client-credentials');
 const {buildAuthenticatedFetch} = require('@inrupt/solid-client-authn-core');
 
@@ -43,7 +44,8 @@ async function main() {
 }
 
 async function storeCalendarOnPod(number) {
-  const calendarData = fs.readFileSync(`vacation${number}$.ttl`, 'utf8');
+  let calendarData = fs.readFileSync(`vacation${number}$.ttl`, 'utf8');
+  calendarData = calendarData.replaceAll('$$$TODAY$$$', format(new Date(), 'y-LL-dd'));
   const calendarACL = fs.readFileSync(`vacation${number}.acl`, 'utf8');
   const {id, secret} = await generateToken('https://pod.playground.solidlab.be/', `c${number}@example.com`, `test`);
   const {accessToken, dpopKey} = await requestAccessToken('https://pod.playground.solidlab.be/.oidc/token', id, secret);
