@@ -53,6 +53,10 @@ This account is already configured in `pod-example-data/config.json`.
 
 ![img.png](img.png)
 
+## Screencast
+
+You find a screencast of the app [here](https://cloud.ilabt.imec.be/index.php/s/HEeGsCS4PiQxaS7).
+
 ## Launch a startup (macOS)
 
 Follow these steps to launch the app a startup in macOS:
