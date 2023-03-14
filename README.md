@@ -44,7 +44,7 @@ The details of the pods are
 |----------------|----------|-------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------|
 | c1@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c1/profile/card#me | https://pod.playground.solidlab.be/c1/profile/vacation-calendar |
 | c2@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c2/profile/card#me | https://pod.playground.solidlab.be/c2/profile/vacation-calendar |
-| c3@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c3/profile/card#me | https://pod.playground.solidlab.be/c3/profile/vacation-calendar |
+| c3@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c3/profile/card#me | None                                                            |
 
 You use `c3@example.com` as your account for logging in with the app.
 This account is already configured in `pod-example-data/config.json`.
