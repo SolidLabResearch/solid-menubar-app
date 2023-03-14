@@ -42,7 +42,7 @@ async function storeCalendarOnPod(number) {
     }
   });
 
-  if (response.status !== 205) {
+  if (!response.ok) {
     console.log(await response.text());
   } else {
     console.log(`Vacation calendar for c${number}@example.com stored.`);
@@ -56,7 +56,7 @@ async function storeCalendarOnPod(number) {
     }
   });
 
-  if (response1.status !== 205) {
+  if (!response.ok) {
     console.log(await response1.text());
   } else {
     console.log(`Permissions for vacation calendar for c${number}@example.com set.`);
@@ -82,7 +82,7 @@ async function createPod(options) {
     headers: {
       'Content-Type': 'application/json'
     },
-    data: data
+    body: data
   };
 
   const response = await fetch('https://pod.playground.solidlab.be/idp/register/', config);
