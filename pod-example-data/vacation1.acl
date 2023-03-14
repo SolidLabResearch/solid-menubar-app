@@ -2,9 +2,9 @@
 @prefix acl: <http://www.w3.org/ns/auth/acl#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 
-<#public>
+<#others>
     a acl:Authorization;
-    acl:agent <https://pieterheyvaert.com/#me>;
+    acl:agent <https://pod.playground.solidlab.be/c3/profile/card#me>;
     acl:accessTo <./vacation-calendar>;
     acl:mode acl:Read.
 

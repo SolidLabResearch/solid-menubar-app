@@ -1,0 +1,17 @@
+{
+  "webid": "https://exampl.com#me",
+  "email": "c3@example.com",
+  "password": "test",
+  "serverUrl": "https://pod.playground.solidlab.be/",
+  "icon": "icons/icon-white.png",
+  "vacations": [
+    {
+      "vacationUrl": "https://pod.playground.solidlab.be/c1/profile/vacation-calendar",
+      "webid": "https://pod.playground.solidlab.be/c1/profile/card#me"
+    },
+    {
+      "vacationUrl": "https://pod.playground.solidlab.be/c2/profile/vacation-calendar",
+      "webid": "https://pod.playground.solidlab.be/c2/profile/card#me"
+    }
+  ]
+}

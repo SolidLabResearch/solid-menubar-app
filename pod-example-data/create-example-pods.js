@@ -18,6 +18,12 @@ async function main() {
     podName: 'c2'
   });
 
+  await createPod({
+    email: 'c3@example.com',
+    password: `test`,
+    podName: 'c3'
+  });
+
   storeCalendarOnPod(1);
   storeCalendarOnPod(2);
 }

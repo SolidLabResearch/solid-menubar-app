@@ -30,6 +30,24 @@ The config file supports the following attributes:
 - `vacations[*].webid`: WebID to whom the vacation calendar belongs
 
 You find an example config file in `config.examnple.json`.
+
+## Create playground pods and add calendars
+
+You can create three pods for testing by doing the following steps:
+
+1. Navigate to `pod-example-data` via `cd pod-example-data`.
+2. Execute the script `create-example-pods.js` via `node create-example-pods.js`.
+
+The details of the pods are
+
+| Email          | Password | Identity provider                   | WebID                                                 | Calendar                                                        |
+|----------------|----------|-------------------------------------|-------------------------------------------------------|-----------------------------------------------------------------|
+| c1@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c1/profile/card#me | https://pod.playground.solidlab.be/c1/profile/vacation-calendar |
+| c2@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c2/profile/card#me | https://pod.playground.solidlab.be/c2/profile/vacation-calendar |
+| c3@example.com | `test`   | https://pod.playground.solidlab.be/ | https://pod.playground.solidlab.be/c3/profile/card#me | https://pod.playground.solidlab.be/c3/profile/vacation-calendar |
+
+You use `c3@example.com` as your account for logging in with the app.
+This account is already configured in `pod-example-data/config.json`.
    
 ## Screenshot
 
