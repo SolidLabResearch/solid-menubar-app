@@ -1,6 +1,6 @@
 # Solid menubar app example
 
-Important: I didn't clean this code or add any documentation.
+Important: I didn't clean this code or add any in-line documentation.
 
 ## Usage
 1. Install dependencies via
