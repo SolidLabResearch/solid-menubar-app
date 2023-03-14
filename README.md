@@ -51,7 +51,9 @@ This account is already configured in `pod-example-data/config.json`.
    
 ## Screenshot
 
-![img.png](img.png)
+![A screenshot of the menubar app. 
+It shows that Nathalie is on vacation today. 
+It also shows when Nathalie and Amara are on vacation in the future.](screenshot.png)
 
 ## Screencast
 
