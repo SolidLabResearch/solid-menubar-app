@@ -1,6 +1,15 @@
 # Solid menubar app example
 
-Important: I didn't clean this code or add any in-line documentation.
+## Important
+
+- I didn't clean this code or add any in-line documentation.
+- The authentication works only with the 
+[Community Solid Server](https://github.com/CommunitySolidServer/CommunitySolidServer) (CSS) as identity provider,
+because the app relies on CSS' 
+[Client Credentials](https://communitysolidserver.github.io/CommunitySolidServer/6.x/usage/client-credentials/).
+The data can be stored on any Solid pod though.
+There is [this issue](https://github.com/SolidLabResearch/solid-menubar-app/issues/6) 
+to find out how the app can work with Solid-OIDC.
 
 ## Usage
 1. Install dependencies via
